@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Payments - Wavely AI</title>
+    <meta name="description" content="Collect payments natively on WhatsApp. Wavely AI integrates with WhatsApp Pay, Razorpay, Stripe, PayU and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .payments-hero {
+            padding: 10rem 0 5rem;
+            text-align: center;
+            position: relative;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 0.4rem 1rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.5s ease both;
+        }
+        .payments-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+        .payment-card {
+            background: rgba(15, 15, 18, 0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 1.5rem;
+            padding: 2.5rem 2rem;
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .payment-card:hover { transform: translateY(-8px); border-color: rgba(139, 92, 246, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .payment-card:hover::before { opacity: 1; }
+        .payment-card .card-icon {
+            width: 56px; height: 56px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .payment-card h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 0.75rem; color: white; }
+        .payment-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Payment Method logos strip */
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        .method-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 0.75rem 1.25rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            transition: all 0.3s;
+        }
+        .method-badge:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .method-badge i { font-size: 1.5rem; }
+
+        /* Stats row */
+        .payments-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin: 5rem 0;
+            flex-wrap: wrap;
+        }
+        .payments-stat { text-align: center; }
+        .payments-stat .num {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .payments-stat .label { color: var(--text-muted); font-size: 0.95rem; margin-top: 0.3rem; }
+
+        /* CTA section */
+        .payments-cta {
+            background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.1));
+            border: 1px solid rgba(139,92,246,0.2);
+            border-radius: 2rem;
+            padding: 4rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-up { animation: fadeInUp 0.6s ease both; }
+    </style>
+</head>
+<body>
+    <div class="glowing-blob blob-1"></div>
+    <div class="glowing-blob blob-2"></div>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <a href="index.html" class="logo">
+                <i class="ph-fill ph-waveform"></i>
+                <span>Wavely AI</span>
+            </a>
+            <div class="nav-right">
+                <a href="login.html" class="btn btn-outline btn-sm">Login <i class="ph-bold ph-arrow-right"></i></a>
+                <a href="signup.html" class="btn btn-primary btn-sm">Sign Up <i class="ph-bold ph-arrow-right"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="payments-hero container">
+        <div class="hero-badge fade-up">
+            <i class="ph-fill ph-currency-circle-dollar"></i> WhatsApp Payments
+        </div>
+        <h1 class="hero-title fade-in fade-in-up delay-200">
+            Sell Directly Inside<br>
+            <span class="text-gradient">WhatsApp Chats</span>
+        </h1>
+        <p class="hero-subtitle fade-in fade-in-up delay-300">
+            No redirects. No friction. Your customers can discover, order and pay<br>
+            — all without ever leaving WhatsApp.
+        </p>
+        <div class="hero-cta fade-in fade-in-up delay-400">
+            <a href="signup.html" class="btn btn-primary">Start Collecting Payments <i class="ph-bold ph-arrow-right"></i></a>
+            <a href="index.html" class="btn btn-outline"><i class="ph-bold ph-arrow-left"></i> Back to Home</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="payments-stats fade-in delay-500">
+            <div class="payments-stat"><div class="num">3X</div><div class="label">Higher Conversion vs Website</div></div>
+            <div class="payments-stat"><div class="num">98%</div><div class="label">Message Open Rate</div></div>
+            <div class="payments-stat"><div class="num">0</div><div class="label">Redirects or Drop-offs</div></div>
+            <div class="payments-stat"><div class="num">2 Taps</div><div class="label">To Complete a Purchase</div></div>
+        </div>
+    </section>
+
+    <!-- Feature Cards -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 1rem;">
+                <h2 class="section-title">Everything You Need to <span class="text-gradient">Sell on WhatsApp</span></h2>
+                <p class="section-desc">One platform. Unlimited payment potential.</p>
+            </div>
+
+            <div class="payments-grid">
+                <div class="payment-card reveal">
+                    <div class="card-icon" style="background: rgba(16,185,129,0.1);">
+                        <i class="ph-fill ph-whatsapp-logo" style="color: #10b981;"></i>
+                    </div>
+                    <h3>Native WhatsApp Pay</h3>
+                    <p>Let customers pay directly within WhatsApp without switching to any external app or browser.</p>
+                </div>
+                <div class="payment-card reveal">
+                    <div class="card-icon" style="background: rgba(99,102,241,0.1);">
+                        <i class="ph-fill ph-link" style="color: #6366f1;"></i>
+                    </div>
+                    <h3>Payment Link Sharing</h3>
+                    <p>Generate and send personalized payment links via WhatsApp broadcasts or automated flows.</p>
+                </div>
+                <div class="payment-card reveal">
+                    <div class="card-icon" style="background: rgba(245,158,11,0.1);">
+                        <i class="ph-fill ph-storefront" style="color: #f59e0b;"></i>
+                    </div>
+                    <h3>WhatsApp Catalog Orders</h3>
+                    <p>Showcase your products in a WhatsApp catalog and collect payments seamlessly on checkout.</p>
+                </div>
+                <div class="payment-card reveal">
+                    <div class="card-icon" style="background: rgba(168,85,247,0.1);">
+                        <i class="ph-fill ph-robot" style="color: #a855f7;"></i>
+                    </div>
+                    <h3>AI-Powered Follow-ups</h3>
+                    <p>Automatically follow up on abandoned carts and incomplete payments with smart AI nudges.</p>
+                </div>
+                <div class="payment-card reveal">
+                    <div class="card-icon" style="background: rgba(236,72,153,0.1);">
+                        <i class="ph-fill ph-receipt" style="color: #ec4899;"></i>
+                    </div>
+                    <h3>Instant Receipts & Alerts</h3>
+                    <p>Send automated payment confirmations, order receipts, and shipping updates on WhatsApp.</p>
+                </div>
+                <div class="payment-card reveal">
+                    <div class="card-icon" style="background: rgba(20,184,166,0.1);">
+                        <i class="ph-fill ph-shield-check" style="color: #14b8a6;"></i>
+                    </div>
+                    <h3>Secure & Compliant</h3>
+                    <p>PCI-DSS compliant payment processing with end-to-end encryption on every transaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">Works with <span class="text-gradient">All Major Gateways</span></h2>
+            <p class="section-desc">Plug in your preferred payment provider in minutes.</p>
+
+            <div class="payment-methods">
+                <div class="method-badge"><i class="ph-fill ph-currency-inr" style="color: #10b981;"></i> WhatsApp Pay</div>
+                <div class="method-badge"><i class="ph-fill ph-credit-card" style="color: #6366f1;"></i> Razorpay</div>
+                <div class="method-badge"><i class="ph-fill ph-credit-card" style="color: #f59e0b;"></i> Stripe</div>
+                <div class="method-badge"><i class="ph-fill ph-bank" style="color: #a855f7;"></i> PayU</div>
+                <div class="method-badge"><i class="ph-fill ph-currency-circle-dollar" style="color: #ec4899;"></i> Cashfree</div>
+                <div class="method-badge"><i class="ph-fill ph-qr-code" style="color: #14b8a6;"></i> UPI</div>
+                <div class="method-badge"><i class="ph-fill ph-credit-card" style="color: #3b82f6;"></i> Paytm</div>
+                <div class="method-badge"><i class="ph-fill ph-bank" style="color: #10b981;"></i> Net Banking</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="payments-cta reveal">
+                <h2 class="section-title">Ready to Turn Chats into <span class="text-gradient">Revenue?</span></h2>
+                <p class="section-desc" style="margin-bottom: 2.5rem;">Join 310,000+ businesses already selling on WhatsApp with Wavely AI.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="signup.html" class="btn btn-primary">Start Free 14-Day Trial <i class="ph-bold ph-arrow-right"></i></a>
+                    <a href="index.html" class="btn btn-outline"><i class="ph-bold ph-arrow-left"></i> Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.05); padding: 5rem 0 2rem;">
+        <div class="container footer-grid">
+            <div>
+                <a href="index.html" class="logo" style="margin-bottom: 1.5rem; display: inline-flex;">
+                    <i class="ph-fill ph-waveform"></i>
+                    <span>Wavely AI</span>
+                </a>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">© 2026 Wavely Technologies Inc.</p>
+                <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 500; color: #f8fafc; margin-top: 1rem;">
+                    <i class="ph-fill ph-meta-logo" style="font-size: 1.5rem; color: #3b82f6;"></i> Meta
+                    <span style="font-weight: 400; color: var(--text-muted);">Business Partner</span>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem; color: var(--text-muted); font-size: 1.4rem;">
+                    <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-twitter-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-linkedin-logo"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Platform</h4>
+                <div class="footer-links" style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="aiengine.html">AI Engine</a>
+                    <a href="capabilities.html">Capabilities</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="security.html">Security</a>
+                </div>
+            </div>
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Resources</h4>
+                <div class="footer-links" style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="documentation.html">Documentation</a>
+                    <a href="api-reference.html">API Reference</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="case-studies.html">Case Studies</a>
+                </div>
+            </div>
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Company</h4>
+                <div class="footer-links" style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="aboutus.html">About Us</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="partners.html">Partners</a>
+                </div>
+            </div>
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Legal</h4>
+                <div class="footer-links" style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

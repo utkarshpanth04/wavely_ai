@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wavely AI - AI-Powered WhatsApp Platform</title>
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Ambient Glow Effects -->
+    <div class="glowing-blob blob-1"></div>
+    <div class="glowing-blob blob-2"></div>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="container nav-wrapper">
+            <div class="nav-left">
+                <a href="#" class="logo">
+                    <i class="ph-fill ph-waveform"></i>
+                    <span>Wavely AI</span>
+                </a>
+            </div>
+
+            <nav class="nav-center">
+                <a href="pricing.html">Pricing</a>
+                <style>
+                    .nav-dropdown-wrapper {
+                        position: relative;
+                        display: inline-block;
+                    }
+
+                    .dropdown-menu {
+                        position: absolute;
+                        top: 100%;
+                        left: 50%;
+                        transform: translateX(-50%) translateY(15px);
+                        background: #0f0f12;
+                        border: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 1.25rem;
+                        padding: 1.5rem;
+                        width: 640px;
+                        backdrop-filter: blur(24px);
+                        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255,255,255,0.05);
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                        gap: 0.5rem;
+                        z-index: 1000;
+                    }
+
+                    .nav-dropdown-wrapper:hover .dropdown-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateX(-50%) translateY(0);
+                    }
+
+                    .dropdown-item {
+                        display: flex !important;
+                        align-items: flex-start !important;
+                        gap: 1rem !important;
+                        padding: 1rem !important;
+                        border-radius: 1rem;
+                        transition: all 0.2s ease !important;
+                        margin: 0 !important;
+                        cursor: pointer;
+                    }
+
+                    .dropdown-item:hover {
+                        background: rgba(255, 255, 255, 0.06);
+                        transform: translateX(4px);
+                    }
+
+                    .dropdown-item i {
+                        font-size: 1.5rem;
+                        color: #10b981;
+                        margin-top: 0.1rem;
+                        flex-shrink: 0;
+                    }
+
+                    .dropdown-item i.ph-sparkles {
+                        color: #f59e0b;
+                    }
+
+                    .dropdown-text {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
+                    .dropdown-text .title {
+                        color: var(--text-main);
+                        font-weight: 600;
+                        font-size: 0.95rem;
+                        margin-bottom: 0.2rem;
+                    }
+
+                    .dropdown-text .desc {
+                        color: var(--text-muted);
+                        font-size: 0.8rem;
+                        line-height: 1.4;
+                        font-weight: 400;
+                    }
+                </style>
+                <div class="nav-dropdown-wrapper">
+                    <a href="#">Products <i class="ph ph-caret-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-rss"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Marketing</span><span
+                                    class="desc">Broadcast, Automate & Grow</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-mouse"></i>
+                            <div class="dropdown-text"><span class="title">AI Ads Manager</span><span class="desc">5X
+                                    your Leads right away</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-robot"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Chatbots</span><span
+                                    class="desc">Automate your messaging with AI</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-robot" style="color: #6366f1;"></i>
+                            <div class="dropdown-text"><span class="title">AI WhatsApp Chatbot</span><span
+                                    class="desc">Automate everything with AI</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-currency-circle-dollar"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Payments</span><span
+                                    class="desc">Collect Payments within WhatsApp</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-clipboard-text"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Forms</span><span
+                                    class="desc">Native Forms within WhatsApp</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-link"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Link & QR</span><span
+                                    class="desc">Free WhatsApp Link & QR generator</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-seal-check"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Blue Tick</span><span
+                                    class="desc">Get a Verified Badge</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-shopping-cart"></i>
+                            <div class="dropdown-text"><span class="title">Showroom Kit</span><span class="desc">QR
+                                    stand for your offline store</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-sparkles"></i>
+                            <div class="dropdown-text"><span class="title">AiPersy</span><span class="desc">Hire 10X
+                                    Faster with AI</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-dropdown-wrapper">
+                    <a href="#">Features <i class="ph ph-caret-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-fire"></i>
+                            <div class="dropdown-text"><span class="title">Features</span><span class="desc">Explore all
+                                    Powerful AiSensy features</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-rss"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Broadcasting</span><span
+                                    class="desc">Retargeting, CRM & more</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-robot"></i>
+                            <div class="dropdown-text"><span class="title">AI WhatsApp Chatbot</span><span
+                                    class="desc">Automate anything with AI</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-paper-plane-tilt"></i>
+                            <div class="dropdown-text"><span class="title">Ads Manager</span><span class="desc">3X Your
+                                    Leads</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-robot"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Chatbots</span><span
+                                    class="desc">Drag & Drop Flow Builder</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-book-open-text"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Catalog</span><span
+                                    class="desc">Sell Products on WhatsApp</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-currency-circle-dollar"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Payments</span><span
+                                    class="desc">Collect Payments via UPI & Card</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-clipboard-text"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Forms</span><span
+                                    class="desc">Native Data Collection</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-browser"></i>
+                            <div class="dropdown-text"><span class="title">WhatsApp Webviews</span><span
+                                    class="desc">Web within WhatsApp</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-cursor-click"></i>
+                            <div class="dropdown-text"><span class="title">Click Tracking</span><span
+                                    class="desc">Import, Broadcast & Track</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-dropdown-wrapper">
+                    <a href="#">Industries <i class="ph ph-caret-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-arrows-clockwise"></i>
+                            <div class="dropdown-text"><span class="title">All Industries</span><span
+                                    class="desc">Industry-wise Use Cases</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-graduation-cap"></i>
+                            <div class="dropdown-text"><span class="title">Education</span><span class="desc">Edtech,
+                                    Coaches, Institutes</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-shopping-cart"></i>
+                            <div class="dropdown-text"><span class="title">E-commerce</span><span class="desc">Brands &
+                                    D2C</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-currency-circle-dollar"></i>
+                            <div class="dropdown-text"><span class="title">Finance & Insurance</span><span
+                                    class="desc">Fintech, Banking & more</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-first-aid"></i>
+                            <div class="dropdown-text"><span class="title">Healthcare</span><span
+                                    class="desc">Appointment Booking, Hospitals</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-car"></i>
+                            <div class="dropdown-text"><span class="title">Automobile</span><span class="desc">Book Test
+                                    Drive, Sell Faster</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-house"></i>
+                            <div class="dropdown-text"><span class="title">Real Estate</span><span
+                                    class="desc">Developers, Brokers, Coworking</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-wifi-high"></i>
+                            <div class="dropdown-text"><span class="title">IT Services & Internet</span><span
+                                    class="desc">Showcase your services</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-calendar"></i>
+                            <div class="dropdown-text"><span class="title">Events & Webinar</span><span
+                                    class="desc">Boost Attendance</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-dropdown-wrapper">
+                    <a href="#">Resources <i class="ph ph-caret-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-question"></i>
+                            <div class="dropdown-text"><span class="title">Help Center</span><span class="desc">FAQs, How-to's & more</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-graduation-cap"></i>
+                            <div class="dropdown-text"><span class="title">Tutorials</span><span class="desc">Learn how to use the platform</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-youtube-logo"></i>
+                            <div class="dropdown-text"><span class="title">Youtube</span><span class="desc">Tutorials, Podcasts, Events & more</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-clipboard-text"></i>
+                            <div class="dropdown-text"><span class="title">Template Library</span><span class="desc">Explore the right templates</span></div>
+                        </a>
+                        <a href="blog.html" class="dropdown-item">
+                            <i class="ph-fill ph-newspaper"></i>
+                            <div class="dropdown-text"><span class="title">Blog</span><span class="desc">Latest Updates & Stories</span></div>
+                        </a>
+                        <a href="api-reference.html" class="dropdown-item">
+                            <i class="ph-fill ph-link"></i>
+                            <div class="dropdown-text"><span class="title">Developer APIs</span><span class="desc">Send Templates via API</span></div>
+                        </a>
+                        <a href="case-studies.html" class="dropdown-item">
+                            <i class="ph-fill ph-chart-line-up"></i>
+                            <div class="dropdown-text"><span class="title">Case Studies</span><span class="desc">Business Growth stories</span></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-dropdown-wrapper">
+                    <a href="#">Integrations <i class="ph ph-caret-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-gear"></i>
+                            <div class="dropdown-text"><span class="title">Explore all Integrations</span><span
+                                    class="desc">Automate Notifications</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-shopping-cart"></i>
+                            <div class="dropdown-text"><span class="title">Shopify</span><span class="desc">Abandoned
+                                    Cart, Order Status & more</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-currency-circle-dollar"></i>
+                            <div class="dropdown-text"><span class="title">Razorpay</span><span class="desc">Send
+                                    Payment Notifications</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-shopping-cart"></i>
+                            <div class="dropdown-text"><span class="title">Shopify Checkouts</span><span
+                                    class="desc">Simple, Magic Checkout & more</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-lightning"></i>
+                            <div class="dropdown-text"><span class="title">WebEngage</span><span class="desc">Automate
+                                    your Journeys</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-user-square"></i>
+                            <div class="dropdown-text"><span class="title">LeadSquared</span><span class="desc">Connect
+                                    your CRM</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-link"></i>
+                            <div class="dropdown-text"><span class="title">Integrately</span><span class="desc">Build
+                                    Automations</span></div>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <i class="ph-fill ph-gear"></i>
+                            <div class="dropdown-text"><span class="title">Webhook APIs</span><span class="desc">Receive
+                                    incoming data from AiSensy to your backend</span></div>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="nav-right">
+                <a href="login.html" class="btn btn-outline btn-sm">Login <i class="ph-bold ph-arrow-right"></i></a>
+                <a href="signup.html" class="btn btn-primary btn-sm">Sign Up <i class="ph-bold ph-arrow-right"></i></a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section class="hero text-center container">
+        <h1 class="hero-title fade-in fade-in-up delay-200">
+            Automate WhatsApp with<br>
+            <span class="text-gradient">Wavely AI Platform</span>
+        </h1>
+        <p class="hero-subtitle fade-in fade-in-up delay-300">
+            Broadcast, Automate, Engage, and Sell effortlessly using the most powerful <br>
+            AI-driven WhatsApp Marketing & Engagement Platform.
+        </p>
+        <div class="hero-cta fade-in fade-in-up delay-400">
+            <a href="signup.html" class="btn btn-primary">Start 14-Day FREE Trial <i class="ph-bold ph-arrow-right"></i></a>
+            <a href="watchdemo.html" class="btn btn-outline">Watch Demo <i class="ph-bold ph-play"></i></a>
+        </div>
+
+        <div class="hero-visual fade-in delay-500">
+            <img src="order placed.webp" alt="Order Placed - Wavely AI Hero Visual">
+        </div>
+    </section>
+
+    <!-- Trusted By Logos -->
+    <section class="brands section-padding">
+        <div class="container text-center">
+            <h3 class="section-heading-sm">Trusted by Forward-Thinking Brands</h3>
+            <p class="section-subtext" style="margin-top: 0.5rem; margin-bottom: 2rem;">Powering 310,000+ Businesses
+                Worldwide</p>
+
+            <style>
+                .marquee-container {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    width: 100%;
+                    position: relative;
+                    /* Fading edges */
+                    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+                }
+
+                .brands-marquee {
+                    display: inline-flex;
+                    gap: 6rem;
+                    padding-right: 6rem;
+                    animation: marquee-scroll 20s linear infinite;
+                    align-items: center;
+                }
+
+                .brands-marquee:hover {
+                    animation-play-state: paused;
+                }
+
+                .brands-marquee img {
+                    filter: grayscale(100%) brightness(200%) opacity(0.6);
+                    transition: all 0.3s ease;
+                    cursor: pointer;
+                }
+
+                .brands-marquee img:hover {
+                    filter: grayscale(0%) brightness(100%) opacity(1);
+                    transform: scale(1.1);
+                }
+
+                @keyframes marquee-scroll {
+                    0% {
+                        transform: translateX(0);
+                    }
+
+                    100% {
+                        transform: translateX(-50%);
+                    }
+                }
+            </style>
+
+            <div class="marquee-container">
+                <div class="brands-marquee">
+                    <!-- Set 1 -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Indiamart_logo.png" alt="Indiamart"
+                        style="height: 30px; object-fit: contain;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Emami_Logo.png" alt="Emami"
+                        style="height: 30px; object-fit: contain;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Vivo_mobile_logo.png" alt="Vivo"
+                        style="height: 30px; object-fit: contain;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Justdial-logo.png" alt="Justdial"
+                        style="height: 35px; object-fit: contain;">
+
+                    <!-- Set 2 (Duplicate for continuous loop) -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Indiamart_logo.png" alt="Indiamart"
+                        style="height: 30px; object-fit: contain;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Emami_Logo.png" alt="Emami"
+                        style="height: 30px; object-fit: contain;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Vivo_mobile_logo.png" alt="Vivo"
+                        style="height: 30px; object-fit: contain;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Justdial-logo.png" alt="Justdial"
+                        style="height: 35px; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why WhatsApp Stats -->
+    <section class="section-padding bg-light">
+        <div class="container text-center">
+            <h2 class="section-title">The Power of <span class="text-gradient">Conversational AI</span></h2>
+            <p class="section-desc">Combine WhatsApp's unprecedented reach with our intelligent AI models.</p>
+
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-num">98%</div>
+                    <div class="stat-label">Open Rates</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-num">50%+</div>
+                    <div class="stat-label">Click Rates</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-num">2.6Bn</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-num">10X</div>
+                    <div class="stat-label">Conversion Lift</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Features Grid -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;">
+                <h2 class="section-title">Intelligent Features for <span class="text-gradient">Growth</span></h2>
+                <p class="section-desc">Scale your interactions at lightning speeds using Wavely AI</p>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-6">
+                    <div class="feature-card reveal">
+                        <h3>AI Hybrid Live Chat</h3>
+                        <p>Seamlessly hand off conversations from AI support agents to human representatives without
+                            losing any context.</p>
+                        <p>Smart tag routing and AI sentiment analysis to prioritize your most important leads
+                            automatically.</p>
+                        <img src="Hybrid live.png" alt="Live Chat UI"
+                            style="width: 100%; border-radius: 12px; margin-top: 1.5rem;">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="feature-card reveal" style="transform: translateY(40px);">
+                        <h3>Predictive Analytics</h3>
+                        <p>Track your campaign results in real-time with comprehensive AI-powered dashboards.</p>
+                        <p>Monitor open rates and dynamically optimize future retargeting campaigns based on predictive
+                            models.</p>
+                        <img src="Predictive.png" alt="Analytics UI"
+                            style="width: 100%; border-radius: 12px; margin-top: 1.5rem;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collect Payments Section -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6 reveal">
+                    <h2 class="section-title">Frictionless Checkouts</h2>
+                    <p class="section-desc" style="margin-bottom: 1.5rem;">Collect Payments natively on WhatsApp. Wavely
+                        AI integrates effortlessly with WhatsApp Pay, Stripe, PayU, and more, allowing end-to-end
+                        commerce within the chat interface.</p>
+                    <a href="payments.html" class="btn btn-outline">Explore Payments <i class="ph-bold ph-arrow-right"></i></a>
+                </div>
+                <div class="col-6 reveal">
+                    <img src="fictionless.png" alt="Collect payments via WhatsApp" class="feature-img shadow"
+                        style="filter: brightness(0.9) contrast(1.1);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Loved by Growth Leaders</h2>
+
+            <div class="testimonials-grid mt-4">
+                <div class="testimonial-card reveal">
+                    <img src="https://i.pravatar.cc/150?img=5" alt="Sarah J." class="avatar">
+                    <h4>Sarah J.</h4>
+                    <p class="role">VP Marketing</p>
+                    <p class="quote">"Wavely AI revolutionized how we engage. The AI agents immediately reduced support
+                        backlog and we saw a 4x increase in our broadcast CTRs."</p>
+                </div>
+                <div class="testimonial-card reveal" style="border-top-color: var(--primary-color);">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="Mark D." class="avatar">
+                    <h4>Mark D.</h4>
+                    <p class="role">Head of Growth</p>
+                    <p class="quote">"The predictive retargeting feature from Wavely AI pushed our bottom line up by
+                        30%. Absolutely unparalleled WhatsApp intelligence."</p>
+                </div>
+                <div class="testimonial-card reveal">
+                    <img src="https://i.pravatar.cc/150?img=9" alt="Alena T." class="avatar">
+                    <h4>Alena T.</h4>
+                    <p class="role">E-commerce Founder</p>
+                    <p class="quote">"Frictionless native checkout was game-changing. Customers can buy our products in
+                        two taps without ever leaving WhatsApp."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Section -->
+    <section class="section-padding pt-0">
+        <div class="container">
+            <div class="api-card shadow reveal">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <h2 class="section-title" style="text-align: left; margin-bottom: 1rem;">Official API Access in
+                            <span class="text-gradient">Minutes</span>
+                        </h2>
+                        <p class="section-desc" style="text-align: left; margin-bottom: 2rem;">Wavely AI is a verified
+                            Meta Business Partner natively connected to Official WhatsApp Business APIs.</p>
+
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <i class="ph-fill ph-check-circle"></i>
+                                <div>
+                                    <h5>Official Green Tick Verification</h5>
+                                    <p>Get the coveted Green Tick, build instant trust, and broadcast unlimited
+                                        personalized campaigns.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="ph-fill ph-robot"></i>
+                                <div>
+                                    <h5>1-Click AI Agent Deployment</h5>
+                                    <p>Train AI models on your own knowledge base and let them handle tier-1 support
+                                        24/7.</p>
+                                </div>
+                            </div>
+                            <div class="feature-item">
+                                <i class="ph-fill ph-lightning"></i>
+                                <div>
+                                    <h5>Enterprise Infrastructure</h5>
+                                    <p>Experience 99.9% uptime, localized data servers, and extreme throughput for high
+                                        volume traffic.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <a href="signup.html" class="btn btn-primary" style="margin-top: 2.5rem;">Launch Now for FREE <i
+                                class="ph-bold ph-arrow-right"></i></a>
+                    </div>
+                    <div class="col-6 text-center">
+                        <img src="WhatsApp-Business-API.png"
+                            style="width: 115%; max-width: none; height: auto; border-radius: 12px; margin-left: 0; transform: translateX(-5%); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.5);"
+                            alt="Official API Access in Minutes">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" style="margin-bottom: 3rem;">Frequently Asked Questions</h2>
+            <div class="faq-container reveal">
+                <div class="faq-item">
+                    <div class="faq-question">What does Wavely AI do? <i class="ph-bold ph-caret-down"></i></div>
+                    <div class="faq-answer">Wavely AI is a next-generation WhatsApp Marketing & Automation platform
+                        fueled by advanced AI features for seamless customer engagement.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is Wavely AI approved by Meta? <i class="ph-bold ph-caret-down"></i></div>
+                    <div class="faq-answer">Yes, we are fully integrated with official WhatsApp Business APIs, ensuring
+                        complete adherence to Meta's communication policies.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Can I test out the AI capabilities for free? <i
+                            class="ph-bold ph-caret-down"></i></div>
+                    <div class="faq-answer">Absolutely. Our 14-day free trial gives you full access to AI Agents,
+                        Broadcasts, and Automation workflows.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do I need to pay Meta for API access? <i
+                            class="ph-bold ph-caret-down"></i></div>
+                    <div class="faq-answer">Wavely AI handles the API infrastructure for you. You only pay for standard
+                        WhatsApp conversation charges and your Wavely subscription.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        style="background: rgba(9, 9, 11, 0.95); border-top: 1px solid rgba(255,255,255,0.05); padding: 5rem 0 2rem;">
+        <div class="container footer-grid">
+            <div>
+                <a href="#" class="logo" style="margin-bottom: 1.5rem; display: inline-flex;">
+                    <i class="ph-fill ph-waveform"></i>
+                    <span>Wavely AI</span>
+                </a>
+                <p style="font-size: 0.9rem; color: var(--text-muted);">© 2026 Wavely Technologies Inc.</p>
+                <div
+                    style="display: flex; align-items: center; gap: 0.5rem; font-weight: 500; color: #f8fafc; margin-top: 1rem;">
+                    <i class="ph-fill ph-meta-logo" style="font-size: 1.5rem; color: #3b82f6;"></i> Meta
+                    <span style="font-weight: 400; color: var(--text-muted);">Business Partner</span>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1.5rem; color: var(--text-muted); font-size: 1.4rem;">
+                    <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-twitter-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-linkedin-logo"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Platform</h4>
+                <div class="footer-links"
+                    style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="aiengine.html">AI Engine</a>
+                    <a href="capabilities.html">Capabilities</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="security.html">Security</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Resources</h4>
+                <div class="footer-links"
+                    style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="documentation.html">Documentation</a>
+                    <a href="api-reference.html">API Reference</a>
+                    <a href="blog.html">Blog</a>
+                    <a href="case-studies.html">Case Studies</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Company</h4>
+                <div class="footer-links"
+                    style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="aboutus.html">About Us</a>
+                    <a href="careers.html">Careers</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="partners.html">Partners</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 1.5rem; color: white;">Legal</h4>
+                <div class="footer-links"
+                    style="display: flex; flex-direction: column; gap: 1rem; font-size: 0.95rem; color: var(--text-muted);">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
