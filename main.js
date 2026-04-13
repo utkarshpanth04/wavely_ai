@@ -110,4 +110,43 @@ document.addEventListener('DOMContentLoaded', () => {
         subtitle.innerHTML = originalText;
     }
 
+
+    // 5. Mobile Hamburger Menu
+    const mobileBtn    = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerClose  = document.getElementById('mobile-drawer-close');
+    const drawerOverlay = document.getElementById('mobile-drawer-overlay');
+
+    if (mobileBtn && mobileDrawer) {
+        function openDrawer() {
+            mobileDrawer.classList.add('open');
+            mobileBtn.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.remove('open');
+            mobileBtn.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        mobileBtn.addEventListener('click', () => {
+            mobileDrawer.classList.contains('open') ? closeDrawer() : openDrawer();
+        });
+
+        if (drawerClose)   drawerClose.addEventListener('click', closeDrawer);
+        if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+
+        // Close drawer on ESC
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeDrawer();
+        });
+
+        // Close drawer when a nav link is tapped
+        mobileDrawer.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta .btn').forEach(link => {
+            link.addEventListener('click', closeDrawer);
+        });
+    }
+
 });
+
