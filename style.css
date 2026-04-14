@@ -19,6 +19,17 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* Eliminate 300ms tap delay on mobile for ALL interactive elements */
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+label {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
 h1,
 h2,
 h3,

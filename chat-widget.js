@@ -37,6 +37,8 @@
       transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s ease;
       position: relative;
       animation: wavely-pulse 2.8s ease-in-out infinite;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
     }
     #wavely-fab:hover {
       transform: scale(1.08);
