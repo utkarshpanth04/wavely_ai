@@ -612,9 +612,14 @@
   sendBtn.addEventListener('click', () => sendMessage());
 
   /* ─────────────── CLOSE ON OUTSIDE CLICK ─────────────── */
+  // Use bubble phase (not capture) so clicks on page buttons are NOT swallowed on mobile
   document.addEventListener('click', e => {
     if (isOpen && !host.contains(e.target)) closeChat();
-  }, true);
+  });
+  // Also handle touchend for mobile tap-outside-to-close
+  document.addEventListener('touchend', e => {
+    if (isOpen && !host.contains(e.target)) closeChat();
+  }, { passive: true });
 
   /* ─────────────── ESC KEY ─────────────── */
   document.addEventListener('keydown', e => {

@@ -158,6 +158,7 @@ a {
     transform: rotate(45deg);
     transition: all 0.3s ease;
     opacity: 0;
+    pointer-events: none;
 }
 
 .btn:hover::after {
