@@ -12,6 +12,7 @@
       bottom: 28px;
       right: 28px;
       z-index: 99999;
+      pointer-events: none; /* Don't block touches when closed — re-enabled for children */
       font-family: 'Inter', sans-serif;
       --w-primary: #8b5cf6;
       --w-grad: linear-gradient(135deg, #6366f1, #a855f7);
@@ -39,6 +40,7 @@
       animation: wavely-pulse 2.8s ease-in-out infinite;
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
+      pointer-events: auto; /* Always clickable */
     }
     #wavely-fab:hover {
       transform: scale(1.08);
@@ -95,7 +97,7 @@
     #wavely-panel.open {
       transform: scale(1) translateY(0);
       opacity: 1;
-      pointer-events: all;
+      pointer-events: auto;
     }
 
     /* ── Panel Header ── */
@@ -566,6 +568,7 @@
   /* ─────────────── TOGGLE ─────────────── */
   function openChat() {
     isOpen = true;
+    host.style.pointerEvents = 'auto'; // Enable full pointer events when open
     panel.classList.add('open');
     fab.classList.add('open');
     iconChat.style.display = 'none';
@@ -579,6 +582,7 @@
 
   function closeChat() {
     isOpen = false;
+    host.style.pointerEvents = 'none'; // Disable blocking when closed
     panel.classList.remove('open');
     fab.classList.remove('open');
     iconChat.style.display = 'block';
@@ -614,14 +618,10 @@
   sendBtn.addEventListener('click', () => sendMessage());
 
   /* ─────────────── CLOSE ON OUTSIDE CLICK ─────────────── */
-  // Use bubble phase (not capture) so clicks on page buttons are NOT swallowed on mobile
+  // Use click event only — touchend was swallowing tap events on page buttons on mobile
   document.addEventListener('click', e => {
     if (isOpen && !host.contains(e.target)) closeChat();
   });
-  // Also handle touchend for mobile tap-outside-to-close
-  document.addEventListener('touchend', e => {
-    if (isOpen && !host.contains(e.target)) closeChat();
-  }, { passive: true });
 
   /* ─────────────── ESC KEY ─────────────── */
   document.addEventListener('keydown', e => {

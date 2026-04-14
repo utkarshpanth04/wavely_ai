@@ -744,7 +744,12 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999;
+    z-index: 100001; /* Above navbar (1000) and chat widget (99999) */
+    pointer-events: none; /* Crucial: Do not block page content when closed */
+}
+
+#mobile-drawer.open {
+    pointer-events: auto;
 }
 
 #mobile-drawer-overlay {
@@ -882,6 +887,7 @@ a {
 
     #mobile-drawer {
         display: block;
+        /* pointer-events still handled by .open class */
     }
 
     .nav-wrapper {
@@ -890,12 +896,16 @@ a {
 
     /* ── Typography ── */
     .hero-title {
-        font-size: 2.6rem;
+        font-size: 2.4rem;
         letter-spacing: -0.5px;
+        color: white; /* Ensure visibility */
+        line-height: 1.2;
     }
 
     .hero-subtitle {
-        font-size: 1.05rem;
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
     }
 
     .section-title {
